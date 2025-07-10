@@ -50,13 +50,13 @@ body {
 .encabezado nav a {
   margin-left: 20px;
   text-decoration: none;
-  color: #2b6cb0;
+  color: #2167b1ea;
   font-weight: bold;
   transition: color 0.2s ease;
 }
 
 .encabezado nav a:hover {
-  color: #1a365d;
+  color: #1b1a5d;
 }
 
 /* 🧾 Título */
@@ -178,8 +178,8 @@ h1 {
 
 .carrito-preview h2 {
   margin-bottom: 15px;
-  color: #2d3748;
-  font-size: 1.2rem;
+  color: #293b5a;
+  font-size: 1.3rem;
   text-align: center;
 }
 
