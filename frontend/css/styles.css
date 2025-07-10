@@ -212,7 +212,7 @@ h1 {
 }
 
 #confirmarBtn {
-  background-color: #38a169;
+  background-color: #278352;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -224,7 +224,7 @@ h1 {
 }
 
 #confirmarBtn:hover {
-  background-color: #2f855a;
+  background-color: #2f855ac4;
   transform: translateY(-2px);
 }
 #btnAtras {
