@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Administrar Citas</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <button id="btnAtras">🔙 Volver</button>
+<script>document.getElementById("btnAtras").addEventListener("click", () => {
+  window.history.back();
+});
+</script>
+</head>
+<body>
+  <h1>Administrar Citas</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Motivo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tablaCitasAdmin"></tbody>
+  </table>
+
+  <script src="../js/admin_citas.js" type="module"></script>
+  <button onclick="cerrarSesion()" class="boton-enviar">Cerrar sesión</button>
+  
+
+  <div id="adminBtn" class="admin-link"></div>
+
+  <script>
+    const token = localStorage.getItem("token");
+    fetch("http://localhost:3000/api/user/perfil", {
+      headers: { "Authorization": token }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.nombre) {
+        document.getElementById("perfil").innerHTML = `
+          <p><strong>Nombre:</strong> ${data.nombre}</p>
+          <p><strong>Correo:</strong> ${data.correo}</p>
+        `;
+        if (data.id_rol === 1) {
+          document.getElementById("adminBtn").innerHTML = `
+            <a href="admin_pqrs.html" class="nav-btn admin-btn">🔧 Ir a gestión de PQRS (Admin)</a>
+          `;
+        }
+      } else {
+        document.getElementById("perfil").innerHTML = "Error: " + data.message;
+      }
+    });
+
+    function cerrarSesion() {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

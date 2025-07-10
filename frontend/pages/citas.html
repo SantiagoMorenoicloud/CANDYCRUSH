@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Gestión de Citas</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <a href="/pages/citas_calendar.html">CITAS CALENDARIO</a>
+        <button id="btnAtras">🔙 Volver</button>
+<script>document.getElementById("btnAtras").addEventListener("click", () => {
+  window.history.back();
+});
+</script>
+</head>
+<body>
+  <h1>Reservar Cita</h1>
+  <label>Fecha: <input type="date" id="fecha" /></label>
+  <label>Hora:
+    <select id="hora">
+      <option value="">--Seleccione hora--</option>
+    </select>
+  </label>
+  <input type="text" id="motivo" placeholder="Motivo de la cita" />
+  <button onclick="registrarCita()">Reservar</button>
+
+  <h2>Mis citas</h2>
+  <ul id="listaCitas"></ul>
+<button onclick="cerrarSesion()" class="boton-enviar">Cerrar sesión</button>
+  
+
+  <div id="adminBtn" class="admin-link"></div>
+
+  <script>
+    const token = localStorage.getItem("token");
+    fetch("http://localhost:3000/api/user/perfil", {
+      headers: { "Authorization": token }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.nombre) {
+        document.getElementById("perfil").innerHTML = `
+          <p><strong>Nombre:</strong> ${data.nombre}</p>
+          <p><strong>Correo:</strong> ${data.correo}</p>
+        `;
+        if (data.id_rol === 1) {
+          document.getElementById("adminBtn").innerHTML = `
+            <a href="admin_pqrs.html" class="nav-btn admin-btn">🔧 Ir a gestión de PQRS (Admin)</a>
+          `;
+        }
+      } else {
+        document.getElementById("perfil").innerHTML = "Error: " + data.message;
+      }
+    });
+
+    function cerrarSesion() {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    }
+  </script>
+  <script src="../js/citas.js"></script>
+</body>
+</html>
+

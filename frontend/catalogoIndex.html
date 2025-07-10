@@ -1,0 +1,109 @@
+<!-- 📄 frontend/pages/catalogo.html actualizado -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo de productos</title>
+  <a href="./pages/register.html" class="nav-btn">REGISTRO</a>
+  <a href="./pages/login.html" class="nav-btn">LOGIN</a>
+  <link rel="stylesheet" href="../css/catalogo.css" />
+</head>
+<body>
+  <header style="text-align: right; margin-bottom: 20px; padding: 0 40px;">
+    <a href="/pages/carrito.html" class="carrito-link">🛒 Ver Carrito</a>
+  </header>
+
+  <h1>Catálogo de productos</h1>
+
+  <div id="catalogo" class="catalogo-grid"></div>
+
+  <section class="carrito-preview">
+    <h2>🧾 Vista previa del carrito</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>producto</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody id="previewCarrito"></tbody>
+    </table>
+
+    <div class="boton-carrito">
+      <a href="carrito.html">
+        <button>Ir al carrito y finalizar compra</button>
+      </a>
+    </div>
+  </section>
+
+  <script type="module">
+    const CATALOGO_URL = "http://localhost:3000/api/productos";
+    const CARRITO_URL = "http://localhost:3000/api/carrito";
+    const USUARIO_ID = 1;
+
+    const contenedor = document.getElementById("catalogo");
+    const previewCarrito = document.getElementById("previewCarrito");
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      const res = await fetch(CATALOGO_URL);
+      const productos = await res.json();
+
+      productos.forEach((producto) => {
+        const card = document.createElement("div");
+        card.className = "producto-card";
+        card.innerHTML = `
+          <div class="tooltip">
+            <img src="${producto.imagen}" alt="${producto.nombre_prod}" />
+            <div class="tooltip-content">
+              <h3>${producto.nombre_prod}</h3>
+              <p><strong>Marca:</strong> ${producto.marca}</p>
+              <p><strong>Categoría:</strong> ${producto.categoria}</p>
+              <p><strong>Precio:</strong> $${producto.precio}</p>
+              <p><strong>Descripción:</strong> ${producto.descripcion || 'Sin descripción disponible.'}</p>
+            </div>
+          </div>
+          <h3>${producto.nombre_prod}</h3>
+          <p><strong>Marca:</strong> ${producto.marca}</p>
+          <p><strong>Categoría:</strong> ${producto.categoria}</p>
+          <p><strong>Precio:</strong> $${producto.precio}</p>
+          <div class="cantidad-control">
+            <input type="number" min="1" value="1" id="cantidad-${producto.id}">
+            <button onclick="agregarAlCarrito(${producto.id}, '${producto.nombre_prod}')">Agregar</button>
+          </div>
+        `;
+
+        contenedor.appendChild(card);
+      });
+
+      cargarPreview();
+    });
+
+    window.agregarAlCarrito = async (productoId, nombre_prod) => {
+      const cantidad = parseInt(document.getElementById(`cantidad-${productoId}`).value);
+      await fetch(CARRITO_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ producto_id: productoId, cantidad, usuario_id: 1 })
+      });
+      alert(`📘 "${nombre_prod}" agregado al carrito.`);
+      cargarPreview();
+    };
+
+    async function cargarPreview() {
+      const res = await fetch(`${CARRITO_URL}/${USUARIO_ID}`);
+      const data = await res.json();
+      previewCarrito.innerHTML = "";
+      data.items.forEach(item => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td>${item.nombre_prod}</td>
+          <td>${item.cantidad}</td>
+        `;
+        previewCarrito.appendChild(fila);
+      });
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,129 @@
+<!-- 📄 frontend/pages/resumen.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen de Compra</title>
+  <link rel="stylesheet" href="../css/styles.css">
+        <button id="btnAtras">🔙 Volver</button>
+<script>document.getElementById("btnAtras").addEventListener("click", () => {
+  window.history.back();
+});
+</script>
+</head>
+<body>
+  <h1>Resumen de Compra</h1>
+
+  <div class="resumen-contenedor">
+    <p>¡Gracias por tu compra!</p>
+    <table>
+      <thead>
+        <tr>
+          <th>producto</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="tablaResumen"></tbody>
+    </table>
+
+    <div class="total-section">
+      <h3>Total Pagado: $<span id="totalFinal">0.00</span></h3>
+      <a href="catalogo.html"><button>Volver al Catálogo</button></a>
+    </div>
+  </div>
+
+  <script type="module">
+  const USUARIO_ID = 1;
+  const API_URL = `http://localhost:3000/api/ventas/usuario/${USUARIO_ID}/ultima`;
+
+  const tabla = document.getElementById("tablaResumen");
+  const totalFinal = document.getElementById("totalFinal");
+  const resumenContenedor = document.querySelector(".resumen-contenedor");
+
+  async function cargarResumen() {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+
+    if (data.error || !data.ventas || data.ventas.length === 0) {
+      tabla.innerHTML = `<tr><td colspan="5">No hay compras recientes</td></tr>`;
+      totalFinal.textContent = "0.00";
+      return;
+    }
+
+    const ventas = data.ventas;
+    const factura = data.factura;
+
+    tabla.innerHTML = "";
+    let total = 0;
+
+    ventas.forEach(v => {
+      const precio = parseFloat(v.precio || 0);
+      const subtotal = parseFloat(v.total || 0);
+
+      const fila = document.createElement("tr");
+      fila.innerHTML = `
+        <td>${v.producto}</td>
+        <td>${v.cantidad}</td>
+        <td>$${precio.toFixed(2)}</td>
+        <td>$${subtotal.toFixed(2)}</td>
+      `;
+      tabla.appendChild(fila);
+      total += subtotal;
+    });
+
+    totalFinal.textContent = total.toFixed(2);
+
+    // ✅ Mostrar la fecha (de la primera venta)
+    const fechaCompra = ventas[0].fecha
+      ? new Date(ventas[0].fecha).toLocaleString()
+      : "Fecha no disponible";
+
+    const fechaP = document.createElement("p");
+    fechaP.textContent = `🕓 Fecha de compra: ${fechaCompra}`;
+
+    const facturaP = document.createElement("p");
+    facturaP.innerHTML = `<strong>🧾 Número de factura:</strong> ${factura}`;
+
+    resumenContenedor.insertBefore(fechaP, tabla.parentElement);
+    resumenContenedor.insertBefore(facturaP, tabla.parentElement);
+  }
+
+  cargarResumen();
+</script>
+<button onclick="cerrarSesion()" class="boton-enviar">Cerrar sesión</button>
+  
+
+  <div id="adminBtn" class="admin-link"></div>
+
+  <script>
+    const token = localStorage.getItem("token");
+    fetch("http://localhost:3000/api/user/perfil", {
+      headers: { "Authorization": token }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.nombre) {
+        document.getElementById("perfil").innerHTML = `
+          <p><strong>Nombre:</strong> ${data.nombre}</p>
+          <p><strong>Correo:</strong> ${data.correo}</p>
+        `;
+        if (data.id_rol === 1) {
+          document.getElementById("adminBtn").innerHTML = `
+            <a href="admin_pqrs.html" class="nav-btn admin-btn">🔧 Ir a gestión de PQRS (Admin)</a>
+          `;
+        }
+      } else {
+        document.getElementById("perfil").innerHTML = "Error: " + data.message;
+      }
+    });
+
+    function cerrarSesion() {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

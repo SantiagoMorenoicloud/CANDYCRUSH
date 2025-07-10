@@ -1,0 +1,150 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f6fa;
+  padding: 2rem;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+/* Formulario */
+form#form-libro {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto 3rem auto;
+  gap: 0.8rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+form#form-libro input,
+form#form-libro select {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+form#form-libro input:focus,
+form#form-libro select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+form#form-libro button {
+  padding: 0.7rem;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+a {
+  padding: 0.7rem;
+  background-color: #3498db;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+a:hover{
+  background-color: #2980b9;
+}
+
+form#form-libro button:hover {
+  background-color: #2980b9;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #3498db;
+  color: white;
+}
+
+th, td {
+  padding: 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+td img {
+  width: 60px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Botones de acción */
+td button {
+  margin: 0 3px;
+  padding: 0.4rem 0.7rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+td button:hover {
+  opacity: 0.9;
+}
+
+td button:nth-child(1) {
+  background-color: #2ecc71;
+} /* Editar */
+td button:nth-child(2) {
+  background-color: #e74c3c;
+} /* Eliminar */
+
+/* Responsive */
+@media (max-width: 768px) {
+  form#form-libro {
+    width: 90%;
+  }
+
+  table, thead, tbody, th, td, tr {
+    font-size: 0.9rem;
+  }
+
+  td img {
+    width: 45px;
+    height: 70px;
+  }
+}
+
+

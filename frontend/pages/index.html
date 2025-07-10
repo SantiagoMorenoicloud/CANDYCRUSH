@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro de Libros</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <a href="/pages/catalogo.html" class="carrito-link">CATÁLOGO</a>
+  <a href="/pages/ventas.html" class="carrito-link">VENTAS</a>
+  <a href="/pages/carrito.html" class="carrito-link">CARRITO</a>
+  <a href="/pages/resumen.html" class="carrito-link">FACTURA</a>
+  <a href="/pages/pqrs.html" class="carrito-link">PQRS</a>
+  <a href="/pages/admin_pqrs.html" class="carrito-link">RESPUESTA PQRS</a>
+  <a href="/pages/citas_calendar.html" class="carrito-link">CITAS</a>
+        <button id="btnAtras">🔙 Volver</button>
+<script>document.getElementById("btnAtras").addEventListener("click", () => {
+  window.history.back();
+});
+</script>
+
+
+
+</head>
+<body>
+  <h1>Registrar Producto</h1>
+
+ <form id="form-producto">
+  <input name="nombre_prod" id="nombre_prod" type="text" placeholder="Producto" required />
+  <select name="marca_id" id="marca_id"></select>
+  <select name="categoria_id" id="categoria_id"></select>
+  <input name="anio" id="anio" type="number" placeholder="Año del producto" required />
+  <input name="imagen" id="imagen" type="text" placeholder="URL imagen" />
+  <input name="stock" id="stock" type="number" placeholder="Stock" required />
+  <input name="precio" id="precio" type="number" placeholder="Precio Und" required />
+  <button type="submit">Registrar</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>producto</th>
+      <th>Marca</th>
+      <th>Categoría</th>
+      <th>Año</th>
+      <th>Imagen</th>
+      <th>Stock</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="tabla-productos"></tbody>
+</table>
+
+<button onclick="cerrarSesion()" class="boton-enviar">Cerrar sesión</button>
+  
+
+  <div id="adminBtn" class="admin-link"></div>
+
+  <script>
+    const token = localStorage.getItem("token");
+    fetch("http://localhost:3000/api/user/perfil", {
+      headers: { "Authorization": token }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.nombre) {
+        document.getElementById("perfil").innerHTML = `
+          <p><strong>Nombre:</strong> ${data.nombre}</p>
+          <p><strong>Correo:</strong> ${data.correo}</p>
+        `;
+        if (data.id_rol === 1) {
+          document.getElementById("adminBtn").innerHTML = `
+            <a href="admin_pqrs.html" class="nav-btn admin-btn">🔧 Ir a gestión de PQRS (Admin)</a>
+          `;
+        }
+      } else {
+        document.getElementById("perfil").innerHTML = "Error: " + data.message;
+      }
+    });
+
+    function cerrarSesion() {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    }
+  </script>
+  <script type="module" src="../js/productos.js"></script>
+</body>
+</html>

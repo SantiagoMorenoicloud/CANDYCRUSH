@@ -1,0 +1,299 @@
+/* 🔄 Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 🌐 Estilo global del cuerpo */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("https://www.king.com/media/r3dbpf3e/candycrush.webp?width=1200&height=627&v=133867610452900000&format=webp&quality=85");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #333;
+  padding: 20px 40px;
+}
+
+
+/* 🔐 Botones de navegación (registro/login) */
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-left: 10px;
+  background-color: #2b6cb0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.nav-btn:hover {
+  background-color: #2c5282;
+  transform: translateY(-2px);
+}
+
+
+/* 🔝 Encabezado superior */
+.encabezado {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  padding: 0 20px; /* Corregido: antes tenía 40px */
+}
+
+.encabezado nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #2b6cb0;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.encabezado nav a:hover {
+  color: #1a365d;
+}
+
+/* 🧾 Título */
+h1 {
+  font-size: 2.8rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  margin-bottom: 40px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.carrito-link {
+  display: inline-block;
+  background-color: #e01313;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-link:hover {
+  background-color: #2c5282;
+  transform: translateY(-2px);
+}
+
+
+/* 🧱 Catálogo de productos */
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+/* 🧾 Tarjetas de productos */
+
+.producto-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.producto-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  margin-inline: -8px;
+  border-radius: 8px;
+ 
+}
+
+.producto-card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.1rem;
+  color: #2d3748;
+}
+
+.producto-card p {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: #4a5568;
+}
+
+/* ➕ Botón Agregar */
+.cantidad-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.cantidad-control input {
+  width: 60px;
+  padding: 4px;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+}
+
+.cantidad-control button {
+  background-color: #2b6cb0;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.cantidad-control button:hover {
+  background-color: #2c5282;
+}
+
+/* 🧾 Vista previa del carrito */
+.carrito-preview {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
+.carrito-preview h2 {
+  margin-bottom: 15px;
+  color: #2d3748;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.carrito-preview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.carrito-preview th,
+.carrito-preview td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #cbd5e0;
+  font-size: 0.95rem;
+}
+
+/* ✅ Botón: Ir al carrito y finalizar compra */
+.boton-carrito {
+  text-align: center;
+}
+
+.boton-carrito button {
+  background-color: #2b6cb0; /* Azul elegante */
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-carrito button:hover {
+  background-color: #2c5282;
+  transform: translateY(-2px);
+}
+
+/* (Opcional) 🧠 Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  color: #2d3748;
+  border: 1px solid #e2e8f0;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 100;
+  top: 100%;
+  left: 0;
+  width: 250px;
+}
+
+.tooltip:hover .tooltip-content {
+  display: block;
+}
+.tooltip {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.tooltip img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+#btnAtras {
+  display: block;
+  margin: 30px auto 0;
+  background-color: #4a5568;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#btnAtras:hover {
+  background-color: #2d3748;
+  transform: translateY(-2px);
+}
+
+.boton-enviar {
+  display: block;
+  margin: 30px auto 0;
+  background-color: #4a5568;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-enviar:hover {
+  background-color: #2d3748;
+  transform: translateY(-2px);
+}
+

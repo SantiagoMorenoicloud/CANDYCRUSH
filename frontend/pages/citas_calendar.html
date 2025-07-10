@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calendario de Citas</title>
+  <a href="/pages/admin_citas.html" id="btnAtras">LISTA DE CITAS</a>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    #calendar {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  </style>
+        <button id="btnAtras">🔙 Volver</button>
+<script>document.getElementById("btnAtras").addEventListener("click", () => {
+  window.history.back();
+});
+</script>
+</head>
+<body>
+  <h1>Mis Citas</h1>
+  <div id="calendar"></div>
+
+  <!-- JS Global de FullCalendar (NO ES MODULAR) -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="../js/citas_calendar.js"></script>
+    <button onclick="cerrarSesion()" class="boton-enviar">Cerrar sesión</button>
+  
+
+  <div id="adminBtn" class="admin-link"></div>
+
+  <script>
+    const token = localStorage.getItem("token");
+    fetch("http://localhost:3000/api/user/perfil", {
+      headers: { "Authorization": token }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.nombre) {
+        document.getElementById("perfil").innerHTML = `
+          <p><strong>Nombre:</strong> ${data.nombre}</p>
+          <p><strong>Correo:</strong> ${data.correo}</p>
+        `;
+        if (data.id_rol === 1) {
+          document.getElementById("adminBtn").innerHTML = `
+            <a href="admin_pqrs.html" class="nav-btn admin-btn">🔧 Ir a gestión de PQRS (Admin)</a>
+          `;
+        }
+      } else {
+        document.getElementById("perfil").innerHTML = "Error: " + data.message;
+      }
+    });
+
+    function cerrarSesion() {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PQRS</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+        <button id="btnAtras">🔙 Volver</button>
+<script>document.getElementById("btnAtras").addEventListener("click", () => {
+  window.history.back();
+});
+</script>
+</head>
+<body>
+
+  <header class="encabezado">
+    <nav>
+      <a href="/pages/perfil.html" class="nav-btn">Perfil</a>
+      <a href="/pages/catalogo.html" class="nav-btn">Catálogo</a>
+    </nav>
+  </header>
+
+  <h1>Crear PQRS</h1>
+
+  <form id="pqrsForm" class="formulario">
+    <select name="tipo" required>
+      <option disabled selected value="">Seleccione el tipo de PQRS</option>
+      <option>Petición</option>
+      <option>Queja</option>
+      <option>Reclamo</option>
+      <option>Sugerencia</option>
+    </select>
+
+    <input name="asunto" placeholder="Asunto" required />
+
+    <textarea name="mensaje" placeholder="Mensaje" required rows="5"></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <h2 class="subtitulo">Mis PQRS</h2>
+  <ul id="lista" class="lista-pqrs"></ul>
+  <button onclick="cerrarSesion()" class="boton-enviar">Cerrar sesión</button>
+  
+
+  <div id="adminBtn" class="admin-link"></div>
+
+  <script>
+    const token = localStorage.getItem("token");
+    fetch("http://localhost:3000/api/user/perfil", {
+      headers: { "Authorization": token }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.nombre) {
+        document.getElementById("perfil").innerHTML = `
+          <p><strong>Nombre:</strong> ${data.nombre}</p>
+          <p><strong>Correo:</strong> ${data.correo}</p>
+        `;
+        if (data.id_rol === 1) {
+          document.getElementById("adminBtn").innerHTML = `
+            <a href="admin_pqrs.html" class="nav-btn admin-btn">🔧 Ir a gestión de PQRS (Admin)</a>
+          `;
+        }
+      } else {
+        document.getElementById("perfil").innerHTML = "Error: " + data.message;
+      }
+    });
+
+    function cerrarSesion() {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <script src="../js/pqrs.js"></script>
+</body>
+</html>

@@ -1,0 +1,586 @@
+/* Fondo general */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("https://www.king.com/media/r3dbpf3e/candycrush.webp?width=1200&height=627&v=133867610452900000&format=webp&quality=85");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #333;
+  padding: 20px 40px;
+}
+
+/* Encabezado de navegación */
+.encabezado {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.encabezado nav a {
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+/* Botones de navegación */
+.nav-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #2b6cb0;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: #2c5282;
+  transform: translateY(-2px);
+}
+
+/* Estilo del título */
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  margin-bottom: 30px;
+  font-weight: 800;
+}
+
+/* Formulario estilizado */
+.formulario {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formulario input {
+  padding: 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.formulario button {
+  background-color: #2b6cb0;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.formulario button:hover {
+  background-color: #2c5282;
+  transform: translateY(-2px);
+}
+
+/* 🧍‍♂️ Tarjeta de perfil */
+.perfil-card {
+  max-width: 400px;
+  margin: 0 auto 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+/* 🔧 Enlace de administrador */
+.admin-link {
+  text-align: center;
+  margin-top: 20px;
+}
+.admin-link a {
+  display: inline-block;
+  background-color: #2b6cb0;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.admin-link a:hover {
+  background-color: #2c5282;
+}
+
+
+
+.admin-btn {
+  background-color: #805ad5;
+}
+
+.admin-btn:hover {
+  background-color: #6b46c1;
+}
+
+
+
+/* 📋 Lista de PQRS */
+.subtitulo {
+  text-align: center;
+  color: #fff;
+  font-size: 1.8rem;
+  margin-top: 40px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.lista-pqrs {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+}
+
+.lista-pqrs li {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 12px;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  color: #2d3748;
+  white-space: pre-wrap;
+}
+
+/* Estilo para select y textarea */
+.formulario select,
+.formulario textarea {
+  padding: 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+.carrito-contenedor {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.carrito-contenedor table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.carrito-contenedor th,
+.carrito-contenedor td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.carrito-contenedor th {
+  background-color: #2b6cb0;
+  color: white;
+  font-weight: bold;
+}
+
+.total-section {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.total-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #2d3748;
+}
+
+#confirmarBtn {
+  background-color: #38a169;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#confirmarBtn:hover {
+  background-color: #2f855a;
+  transform: translateY(-2px);
+}
+#btnAtras {
+  display: block;
+  right: 0;
+  margin: 20px auto 0;
+  text-decoration: none;
+  background-color: #4a5568;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#btnAtras:hover {
+  background-color: #2d3748;
+  transform: translateY(-2px);
+}
+.resumen-contenedor {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+/* Tabla de resumen */
+.resumen-contenedor table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.resumen-contenedor th,
+.resumen-contenedor td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.resumen-contenedor th {
+  background-color: #2b6cb0;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Total final */
+.total-section {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.total-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #2d3748;
+}
+
+/* Botón "Volver al Catálogo" */
+.total-section a button {
+  background-color: #3182ce;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.total-section a button:hover {
+  background-color: #2b6cb0;
+  transform: translateY(-2px);
+}
+
+/* Botón cerrar sesión */
+.boton-enviar {
+  display: block;
+  margin: 40px auto 0;
+  background-color: #e53e3e;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-enviar:hover {
+  background-color: #c53030;
+  transform: translateY(-2px);
+}
+
+#form-producto {
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#form-producto input,
+#form-producto select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+}
+
+#form-producto button {
+  background-color: #3182ce;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#form-producto button:hover {
+  background-color: #2b6cb0;
+}
+table {
+  width: 95%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+  background-color: #2b6cb0;
+  color: white;
+  font-weight: bold;
+}
+
+td img {
+  max-width: 80px;
+  border-radius: 6px;
+}
+.carrito-link {
+  display: inline-block;
+  background-color: #e01313;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-link:hover {
+  background-color: #2c5282;
+  transform: translateY(-2px);
+}
+.form-grid {
+  max-width: 800px;
+  margin: 30px auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+  text-align: center;
+}
+
+.form-group.full-width button {
+  background-color: #3182ce;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-group.full-width button:hover {
+  background-color: #2b6cb0;
+  transform: translateY(-2px);
+}
+#adminLista {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#adminLista li {
+  padding: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #2d3748;
+}
+
+#adminLista li:last-child {
+  border-bottom: none;
+}
+#adminLista textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+#adminLista button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #2b6cb0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#adminLista button:hover {
+  background-color: #2c5282;
+}
+/* Encabezado y botones */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+}
+
+.nav-btn {
+  background-color: #2b6cb0;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: #2c5282;
+}
+
+/* Botón volver */
+.btn-volver {
+  background-color: #718096;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-volver:hover {
+  background-color: #4a5568;
+}
+
+/* Tabla de citas */
+table {
+  width: 90%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+thead {
+  background-color: #2b6cb0;
+  color: white;
+}
+
+/* Botón cerrar sesión */
+.boton-enviar {
+  display: block;
+  margin: 30px auto;
+  background-color: #e53e3e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.boton-enviar:hover {
+  background-color: #c53030;
+}
+

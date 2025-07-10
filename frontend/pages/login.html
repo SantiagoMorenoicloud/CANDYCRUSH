@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+        <button id="btnAtras">🔙 Volver</button>
+<script>document.getElementById("btnAtras").addEventListener("click", () => {
+  window.history.back();
+});
+</script>
+</head>
+<body>
+
+  <header class="encabezado">
+    <nav>
+      <a href="/pages/register.html" class="nav-btn">Registro</a>
+      <a href="/pages/catalogo.html" class="nav-btn">Catálogo</a>
+    </nav>
+  </header>
+
+  <h1>Iniciar sesión</h1>
+
+  <form id="loginForm" class="formulario">
+    <input type="email" name="correo" placeholder="Correo" required />
+    <input type="password" name="contraseña" placeholder="Contraseña" required />
+    <button type="submit">Iniciar sesión</button>
+  </form>
+
+  <script src="../js/auth.js"></script>
+</body>
+</html>
